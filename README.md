@@ -1,6 +1,6 @@
 #Java Licence
 
-mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_keys security/pub.key security/priv.key"
+mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_keys <<public key file path>> <<private key file path>>"
 
 	MacBook-Pro:java-licence sysroot$ mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_keys security/pub.key security/priv.key"
 	[INFO] Scanning for projects...
@@ -20,7 +20,7 @@ mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generat
 	[INFO] ------------------------------------------------------------------------
 
 
-mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_licence security/priv.key security app.zip 'Hello World Company' 2017-12-31 34-36-3B-C6-9C-5A"
+mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_licence <<private key file path>> <<licence folder path>> <<licence file name>> <<company name>> <<expiry date>> <<mac address>>"
 
 	MacBook-Pro:java-licence sysroot$ mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_licence security/priv.key security app.zip 'Hello World Company' 2017-12-31 34-36-3B-C6-9C-5A"
 	[INFO] Scanning for projects...
@@ -43,7 +43,7 @@ mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generat
 	[INFO] ------------------------------------------------------------------------
 
 
-mvn exec:java -Dexec.mainClass="app.licence.LicenceApplication" -Dexec.args="security/pub.key security/app.zip"
+mvn exec:java -Dexec.mainClass="app.licence.LicenceApplication" -Dexec.args="<<public key file path>> <<licence file path>>"
 
 	MacBook-Pro:java-licence sysroot$ mvn exec:java -Dexec.mainClass="app.licence.LicenceApplication" -Dexec.args="security/pub.key security/app.zip"
 	[INFO] Scanning for projects...
@@ -53,6 +53,8 @@ mvn exec:java -Dexec.mainClass="app.licence.LicenceApplication" -Dexec.args="sec
 	[INFO] ------------------------------------------------------------------------
 	[INFO] 
 	[INFO] --- exec-maven-plugin:1.4.0:java (default-cli) @ java-licence ---
+	Current IP address : 172.16.2.41
+	Current MAC address : 34-36-3B-C6-9C-5A
 	Licence Valid. Welcome to Hello World Company!
 	[INFO] ------------------------------------------------------------------------
 	[INFO] BUILD SUCCESS

@@ -1,6 +1,11 @@
 package app.licence;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,8 +24,6 @@ public class LicenceApplication {
 		LicenceManager lm = new LicenceManager();
 		String licenceZipPath = args[1];
 		
-		//boolean licenceStatus = lm.verify(FILE_PUBLIC_KEY, licenceZipPath );
-		//System.out.println(licenceStatus);
 		if (lm.verify(args[0], licenceZipPath)) {
 		    byte[] byteLic = lm.getByteArrayFromZipFile(licenceZipPath, LicenceManager.FILE_APP_LIC);
 		    
@@ -34,7 +37,40 @@ public class LicenceApplication {
 		    Date expiryDate = dateFormat.parse(pk.getExpiryDate());
 		    
 		    if (expiryDate.equals(todayWithZeroTime) || expiryDate.after(todayWithZeroTime)) {
-		     	System.out.println("Licence Valid. Welcome to Hello World Company!");
+				
+				InetAddress ip;
+				try {
+
+					ip = InetAddress.getLocalHost();
+					System.out.println("Current IP address : " + ip.getHostAddress());
+
+					NetworkInterface network = NetworkInterface.getByInetAddress(ip);
+
+					byte[] mac = network.getHardwareAddress();
+
+					System.out.print("Current MAC address : ");
+
+					StringBuilder sb = new StringBuilder();
+					for (int i = 0; i < mac.length; i++) {
+						sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : ""));
+					}
+					System.out.println(sb.toString());
+					String macAddress = sb.toString();
+					if (pk.getMacAddress().equals(macAddress)) {
+						System.out.println("Licence Valid. Welcome to Hello World Company!");
+					}
+					else {
+						 System.out.println("Mac address mismatch. Not allowed to use in this computer");
+					}
+
+				}
+				catch (UnknownHostException e) {
+					e.printStackTrace();
+				}
+				catch (SocketException e) {
+					e.printStackTrace();
+				}
+				
 		    }
 		    else if (expiryDate.before(todayWithZeroTime)) {
 		    	System.out.println("Licence Expired");

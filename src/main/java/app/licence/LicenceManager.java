@@ -36,7 +36,6 @@ import com.google.gson.GsonBuilder;
 
 public class LicenceManager {
 
-	public static final String FILE_PUBLIC_KEY = "pub.key";
 	public static final String FILE_APP_LIC = "app.lic";
 	public static final String FILE_APP_SIG = "app.sig";
 	
@@ -54,7 +53,7 @@ public class LicenceManager {
 		}
 		else if (args[0].equals("generate_licence")) { 
 //			lm.generateLicence("security/priv.key", 
-//					"security/app.lic", "security/app.sig",
+//					"security", "app.zip",
 //					"Hello World Company", "2017-12-31", "34-36-3B-C6-9C-5A");
 //			
 //			lm.zipLicence("security/app.lic", "security/app.sig", "security/app.zip");
@@ -64,17 +63,6 @@ public class LicenceManager {
 					args[4], args[5], args[6]);
 			lm.zipLicence(args[2]+"/"+LicenceManager.FILE_APP_LIC, args[2]+"/"+LicenceManager.FILE_APP_SIG, args[2]+"/"+args[3]);
 			
-		}
-		else {
-			//boolean licenceStatus = lm.verify("pub.key", "security/app.lic", "security/app.sig");
-			boolean licenceStatus = lm.verify("security/pub.key", "security/app.zip");
-			System.out.println(licenceStatus);
-			if (lm.checkMacAddress("security/app.lic")) {
-				lm.checkExpiryDate("security/app.lic");
-			}
-			else {
-			    System.out.println("Mac address mismatch. Not allowed to use in this computer");
-			}
 		}
 	}
 	
@@ -87,9 +75,8 @@ public class LicenceManager {
 		ZipEntry ze = zis.getNextEntry();
 		byte[] byteArray = null;
 		while(ze!=null){
-			//System.out.println(ze.getName());
-			if(ze.getName().indexOf(fileName) != -1){
-				
+
+			if(ze.getName().indexOf(fileName) != -1){				
 				ByteArrayOutputStream out = null; // outside of your loop (for scope).
 
 				out = new ByteArrayOutputStream(); 
@@ -191,7 +178,7 @@ public class LicenceManager {
 	    System.out.println("Licence Generated");
 	}
 
-	private boolean checkMacAddress(String licencePath) {
+	public boolean checkMacAddress(String licencePath) {
 
 		byte[] byteLic = getByteArrayFromFile(new File(licencePath));
 
