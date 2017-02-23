@@ -32,7 +32,7 @@
 
 ### 1. Generate Public/Private Keys
 	
-	mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_keys &lt;public key file path&gt; &lt;private key file path&gt;"
+mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_keys &lt;public key file path&gt; &lt;private key file path&gt;"
 
 	MacBook-Pro:java-licence sysroot$ mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_keys security/pub.key security/priv.key"
 	[INFO] Scanning for projects...
@@ -53,7 +53,7 @@
 
 ### 2. Generate Licence
 
-	mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_licence &lt;private key file path&gt; &lt;licence folder path&gt; &lt;licence file name&gt; &lt;company name&gt; &lt;expiry date&gt; &lt;mac address&gt;"
+mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_licence &lt;private key file path&gt; &lt;licence folder path&gt; &lt;licence file name&gt; &lt;company name&gt; &lt;expiry date&gt; &lt;mac address&gt;"
 
 	MacBook-Pro:java-licence sysroot$ mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_licence security/priv.key security app.zip 'Hello World Company' 2017-12-31 34-36-3B-C6-9C-5A"
 	[INFO] Scanning for projects...
@@ -77,7 +77,7 @@
 
 ### 3. Run Application with Public Key and Licence
 
-	mvn exec:java -Dexec.mainClass="app.licence.LicenceApplication" -Dexec.args="&lt;public key file path&gt; &lt;licence file path&gt;"
+mvn exec:java -Dexec.mainClass="app.licence.LicenceApplication" -Dexec.args="&lt;public key file path&gt; &lt;licence file path&gt;"
 
 	MacBook-Pro:java-licence sysroot$ mvn exec:java -Dexec.mainClass="app.licence.LicenceApplication" -Dexec.args="security/pub.key security/app.zip"
 	[INFO] Scanning for projects...
