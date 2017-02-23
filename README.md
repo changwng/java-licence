@@ -1,6 +1,6 @@
 #Java Licence
 
-mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_keys <<public key file path>> <<private key file path>>"
+mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_keys &lt;&lt;public key file path&gt;&gt; &lt;&lt;private key file path&gt;&gt;"
 
 	MacBook-Pro:java-licence sysroot$ mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_keys security/pub.key security/priv.key"
 	[INFO] Scanning for projects...
@@ -20,7 +20,7 @@ mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generat
 	[INFO] ------------------------------------------------------------------------
 
 
-mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_licence <<private key file path>> <<licence folder path>> <<licence file name>> <<company name>> <<expiry date>> <<mac address>>"
+mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_licence &lt;&lt;private key file path&gt;&gt; &lt;&lt;licence folder path&gt;&gt; &lt;&lt;licence file name&gt;&gt; &lt;&lt;company name&gt;&gt; &lt;&lt;expiry date&gt;&gt; &lt;&lt;mac address&gt;&gt;"
 
 	MacBook-Pro:java-licence sysroot$ mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generate_licence security/priv.key security app.zip 'Hello World Company' 2017-12-31 34-36-3B-C6-9C-5A"
 	[INFO] Scanning for projects...
@@ -43,7 +43,7 @@ mvn exec:java -Dexec.mainClass="app.licence.LicenceManager" -Dexec.args="generat
 	[INFO] ------------------------------------------------------------------------
 
 
-mvn exec:java -Dexec.mainClass="app.licence.LicenceApplication" -Dexec.args="<<public key file path>> <<licence file path>>"
+mvn exec:java -Dexec.mainClass="app.licence.LicenceApplication" -Dexec.args="&lt;&lt;public key file path&gt;&gt; &lt;&lt;licence file path&gt;&gt;"
 
 	MacBook-Pro:java-licence sysroot$ mvn exec:java -Dexec.mainClass="app.licence.LicenceApplication" -Dexec.args="security/pub.key security/app.zip"
 	[INFO] Scanning for projects...
