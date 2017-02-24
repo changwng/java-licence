@@ -1,11 +1,11 @@
 #Java Licence
 
-## Objective
+## Objectives
 1. The program is designed to run in an offline situation with licence control
 2. It can be only executed on or before the expiry date
 3. It can be only executed in a machine which the mac address of the machine is registered (Optional)
 
-## Specification
+## Specifications
 
 ###Licence Encryption (Company)
 1. Use the private key to encrypt the licence(app.lic), which the expiry date and the mac address of the client are stated. The output is a signature file(app.sig)
