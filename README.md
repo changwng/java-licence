@@ -1,5 +1,10 @@
 #Java Licence
 
+## Objective
+1. The program is designed to run in an offline situation with licence control
+2. It can be only executed on or before the expiry date
+3. It can be only executed in a machine which the mac address of the machine is registered (Optional)
+
 ## Specification
 
 ###Licence Encryption (Company)
