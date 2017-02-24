@@ -25,7 +25,7 @@
 ###Steps in terms of functions (Client)
 	1. Signature: SigVerify(PubKey, AppSig), if verified -> go to Decryption, else stop
 	2. Decryption: Decrypt(PubKey, AppSig) -> AppLic[ExpiryDate, MacAddress]
-	3. Check Expiry Date: Compare(AppLic[ExpiryDate], Client[Time]), if AppLic[ExpiryDate] < Client[Time] -> Check Expiry Date, else stop
+	3. Check Expiry Date: Compare(AppLic[ExpiryDate], Client[Time]), if AppLic[ExpiryDate] < Client[Time] -> Check Mac Address, else stop
 	4. Check Mac Address: Compare(AppLic[MacAddress], Client[MacAddress]), if identical -> Start Program, else stop 
 	
 ## Program Execution
