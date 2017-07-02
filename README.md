@@ -7,17 +7,17 @@
 
 ## Specifications
 
-###Licence Encryption (Company)
+### Licence Encryption (Company)
 1. Use the private key to encrypt the licence(app.lic), which the expiry date and the mac address of the client are stated. The output is a signature file(app.sig)
 2. Zip the signature file together with licence file. (app.zip, which zips two files app.lic and app.sig])
 3. Distribute the signature zip(app.zip) and the public key(pub.key) to the client
 
-###Steps in terms of functions (Company) 
+### Steps in terms of functions (Company) 
 	1. Key Generation: KeyGen(Seed) -> PubKey + PrivKey
 	2. Encryption: Encrypt(PrivKey, AppLic[ExpiryDate, MacAddress]) -> AppSig[Encrypted(ExpiryDate, MacAddress)]
 	3. Send File thru email: Email(AppSig, PubKey) -> Client
 
-###License Decryption (Client)
+### License Decryption (Client)
 1. The client puts the signature zip(app.zip) and the public key(pub.key) in his/her computer
 2. Before execution, the program will read the signature zip
 3. The program will unzip the signature zip(app.zip -> app.sig + app.lic), then use the public key(pub.key) to decrypt the signature file(app.sig)
@@ -27,7 +27,7 @@
 7. The expiry date checking is used to ensure the client can only execute the program on or before the expiry date
 8. The mac address verification is used to ensure the client must execute the program provided
 
-###Steps in terms of functions (Client)
+### Steps in terms of functions (Client)
 	1. Signature: SigVerify(PubKey, AppSig), if verified -> go to Decryption, else stop
 	2. Decryption: Decrypt(PubKey, AppSig) -> AppLic[ExpiryDate, MacAddress]
 	3. Check Expiry Date: Compare(AppLic[ExpiryDate], Client[Time]), if AppLic[ExpiryDate] < Client[Time] -> Check Mac Address, else stop
